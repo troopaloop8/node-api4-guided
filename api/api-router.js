@@ -1,13 +1,15 @@
+require('dotenv').config();
 const express = require("express");
 
 const Shouts = require("../shouts/shouts-model.js");
 
 const router = express.Router();
+const insult = process.env.youARE || "cool";
 
 router.use(express.json());
 
 router.get("/", (req, res) => {
-  res.status(200).json({ api: "up" });
+  res.status(200).json({ api: "up", youARE: insult});
 });
 
 router.get("/shouts", (req, res, next) => {
